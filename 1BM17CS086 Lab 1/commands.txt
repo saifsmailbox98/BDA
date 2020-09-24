@@ -1,0 +1,183 @@
+show dbs
+lab    8.19 kB
+admin   254 kB
+local  3.92 GB
+use lab
+'switched to db lab'
+show collections
+test
+use test
+'switched to db test'
+use myDB;
+'switched to db myDB'
+db;
+myDB
+show dbs;
+lab    8.19 kB
+admin   254 kB
+local  3.92 GB
+db.createCollection("Student");
+{ ok: 1 }
+db.Student.drop();
+true
+db.createCollection("Student");
+{ ok: 1 }
+db.Student.insert({_id: 1, StudName: "MichelleJacintha", Grade: "VII", Hobbies: "InternetSurfing"
+});
+{ acknowledged: 1, insertedIds: { '0': 1 } }
+db.Student.find({StudName: "Aryan David"});
+db.find();
+TypeError: db.find is not a function
+db.Student.find();
+{ _id: 1,
+  StudName: 'MichelleJacintha',
+  Grade: 'VII',
+  Hobbies: 'InternetSurfing' }
+use College
+'switched to db College'
+db.createCollection("Student", "Faculty");
+{ ok: 0,
+  errmsg: 'Cannot create property \'promiseLibrary\' on string \'Faculty\'',
+  code: undefined }
+db.createCollection("Student");
+{ ok: 1 }
+db.createCollection("Faculty");
+{ ok: 1 }
+db.createCollection("COE");
+{ ok: 1 }
+db.createCollection("Library");
+{ ok: 1 }
+db.createCollection("Admission");
+{ ok: 1 }
+db.createCollection("College Festival");
+{ ok: 1 }
+db.Student.insert({name: "Saif", usn:"1BM17CS086"})
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 22 1f 7f e5 04 1d 58 45 30 89> } } }
+db.Student.insert({name: "Prateek", usn:"1BM17CS065"})
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 22 2d 7f e5 04 1d 58 45 30 8a> } } }
+db.Faculty.insert({name: "Pallavi G B", email:"pallavi.cse@bmsce.ac.in"})
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 22 e8 7f e5 04 1d 58 45 30 8b> } } }
+db.Faculty.insert({name: "Latha N R", email:"latha.cse@bmsce.ac.in"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 22 fe 7f e5 04 1d 58 45 30 8c> } } }
+db.COE.insert({name: "Ashok Kumar N", designation:"System Tech - Asst"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 23 de 7f e5 04 1d 58 45 30 8d> } } }
+db.COE.insert({name: "Anupama P R", designation:"Assistant Controller of Examinations"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 23 f7 7f e5 04 1d 58 45 30 8e> } } }
+db.Library.insert({name: "S P Suresha", designation:"Asst. Librarian"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 24 cc 7f e5 04 1d 58 45 30 8f> } } }
+db.Library.insert({name: "Shwetha T V", designation:"Library Asst."});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 24 dd 7f e5 04 1d 58 45 30 90> } } }
+db.Admission.insert({branch: "Computer Science & Engineering", type:"UG"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 25 51 7f e5 04 1d 58 45 30 91> } } }
+db.Admission.insert({branch: "Mechanical Engineering", type:"UG"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 25 60 7f e5 04 1d 58 45 30 92> } } }
+db."College Festival".insert(name: "Utsav", month: "April");
+SyntaxError: Unexpected token (1:3)
+
+> 1 | db."College Festival".insert(name: "Utsav", month: "April");
+    |    ^
+db["College Festival"].insert(name: "Utsav", month: "April");
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db["College Festival"].insert(name: "Utsav", month: "April");
+    |                                   ^
+db."College Festival".insert({name: "Utsav", month: "April"});
+SyntaxError: Unexpected token (1:3)
+
+> 1 | db."College Festival".insert({name: "Utsav", month: "April"});
+    |    ^
+db["College Festival"].insert({name: "Utsav", month: "April"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 26 35 7f e5 04 1d 58 45 30 93> } } }
+db["College Festival"].insert({name: "Phaseshift", month: "September"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 6c 26 43 7f e5 04 1d 58 45 30 94> } } }
+db.College.find();
+db.Student.find();
+{ _id: ObjectID("5f6c221f7fe5041d58453089"),
+  name: 'Saif',
+  usn: '1BM17CS086' }
+{ _id: ObjectID("5f6c222d7fe5041d5845308a"),
+  name: 'Prateek',
+  usn: '1BM17CS065' }
+db.Faculty.find();
+{ _id: ObjectID("5f6c22e87fe5041d5845308b"),
+  name: 'Pallavi G B',
+  email: 'pallavi.cse@bmsce.ac.in' }
+{ _id: ObjectID("5f6c22fe7fe5041d5845308c"),
+  name: 'Latha N R',
+  email: 'latha.cse@bmsce.ac.in' }
+db.COE.find();
+{ _id: ObjectID("5f6c23de7fe5041d5845308d"),
+  name: 'Ashok Kumar N',
+  designation: 'System Tech - Asst' }
+{ _id: ObjectID("5f6c23f77fe5041d5845308e"),
+  name: 'Anupama P R',
+  designation: 'Assistant Controller of Examinations' }
+db.Library.find();
+{ _id: ObjectID("5f6c24cc7fe5041d5845308f"),
+  name: 'S P Suresha',
+  designation: 'Asst. Librarian' }
+{ _id: ObjectID("5f6c24dd7fe5041d58453090"),
+  name: 'Shwetha T V',
+  designation: 'Library Asst.' }
+db.Admission.find();
+{ _id: ObjectID("5f6c25517fe5041d58453091"),
+  branch: 'Computer Science & Engineering',
+  type: 'UG' }
+{ _id: ObjectID("5f6c25607fe5041d58453092"),
+  branch: 'Mechanical Engineering',
+  type: 'UG' }
+db['College Festival'].find();
+{ _id: ObjectID("5f6c26357fe5041d58453093"),
+  name: 'Utsav',
+  month: 'April' }
+{ _id: ObjectID("5f6c26437fe5041d58453094"),
+  name: 'Phaseshift',
+  month: 'September' }
