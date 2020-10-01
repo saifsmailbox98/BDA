@@ -1,0 +1,666 @@
+
+
+show dbs
+College   246 kB
+lab      8.19 kB
+myDB       41 kB
+admin     270 kB
+local    4.35 GB
+use Company;
+'switched to db Company'
+db.createCollection("Employee");
+{ ok: 1 }
+db.createCollection("Department");
+{ ok: 1 }
+db.Department.insert({name: "Michael Gibbs", age: 32, departmentNumber: 1431});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 9e 8f 23 9d eb 0f 9c 8d be 64> } } }
+db.Department.find();
+{ _id: ObjectID("5f759e8f239deb0f9c8dbe64"),
+  name: 'Michael Gibbs',
+  age: 32,
+  departmentNumber: 1431 }
+db.Department.find().pretty();
+{ _id: ObjectID("5f759e8f239deb0f9c8dbe64"),
+  name: 'Michael Gibbs',
+  age: 32,
+  departmentNumber: 1431 }
+db.Department.update({name: "Michael Gibbs"}, {$set: {age: 42}}, {upsert: false});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Department.find().pretty();
+{ _id: ObjectID("5f759e8f239deb0f9c8dbe64"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+db.Department.update({name: "Clinton Baptista", }, {$set: {age: 42, departmentNumber: 3512}}, {upsert: true});
+{ acknowledged: 1,
+  insertedId: 
+   { index: 0,
+     _id: 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 9f 33 15 25 ba 5a fd f6 af d9> } },
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1 }
+db.Department.find().pretty();
+{ _id: ObjectID("5f759e8f239deb0f9c8dbe64"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f759f331525ba5afdf6afd9"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+db.Department.save({name: "Nicoli Smith", age: 25, departmentNumber: 1431});
+{ result: 
+   { n: 1,
+     opTime: 
+      { ts: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 },
+        t: 4 },
+     electionId: 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+     ok: 1,
+     '$clusterTime': 
+      { clusterTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 },
+        signature: 
+         { hash: 
+            { _bsontype: 'Binary',
+              sub_type: 0,
+              position: 20,
+              buffer: <Buffer 9a 21 99 ed 80 19 b5 12 e7 71 b1 c7 a0 26 b7 85 51 0e 3c de> },
+           keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+     operationTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 } },
+  connection: 
+   { _events: 
+      { commandStarted: [Function],
+        commandFailed: [Function],
+        commandSucceeded: [Function],
+        clusterTimeReceived: [Function] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     id: 11,
+     address: '3.6.198.122:27017',
+     bson: {},
+     socketTimeout: 360000,
+     monitorCommands: false,
+     closed: false,
+     destroyed: false,
+     lastIsMasterMS: 71 },
+  message: 
+   { parsed: true,
+     raw: <Buffer e6 00 00 00 9b 25 b6 03 df 01 00 00 dd 07 00 00 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 03 00 ... 180 more bytes>,
+     data: <Buffer 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 03 00 00 00 95 9f 75 5f 12 74 00 04 00 00 00 00 00 00 ... 164 more bytes>,
+     bson: {},
+     opts: 
+      { promoteLongs: true,
+        promoteValues: true,
+        promoteBuffers: false },
+     length: 230,
+     requestId: 62268827,
+     responseTo: 479,
+     opCode: 2013,
+     fromCompressed: undefined,
+     responseFlags: 0,
+     checksumPresent: false,
+     moreToCome: false,
+     exhaustAllowed: false,
+     promoteLongs: true,
+     promoteValues: true,
+     promoteBuffers: false,
+     documents: 
+      [ { n: 1,
+          opTime: 
+           { ts: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 },
+             t: 4 },
+          electionId: 
+           { _bsontype: 'ObjectID',
+             id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+          ok: 1,
+          '$clusterTime': 
+           { clusterTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 },
+             signature: 
+              { hash: 
+                 { _bsontype: 'Binary',
+                   sub_type: 0,
+                   position: 20,
+                   buffer: <Buffer 9a 21 99 ed 80 19 b5 12 e7 71 b1 c7 a0 26 b7 85 51 0e 3c de> },
+                keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+          operationTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544085 } } ],
+     index: 214 },
+  ops: 
+   [ { name: 'Nicoli Smith',
+       age: 25,
+       departmentNumber: 1431,
+       _id: 
+        { _bsontype: 'ObjectID',
+          id: <Buffer 5f 75 9f 94 23 9d eb 0f 9c 8d be 65> } } ] }
+db.Department.find().pretty();
+{ _id: ObjectID("5f759e8f239deb0f9c8dbe64"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f759f331525ba5afdf6afd9"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f759f94239deb0f9c8dbe65"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+db.Department.drop();
+true
+db.createCollection("Department");
+{ ok: 1 }
+db.Employee.insert({name: "Michael Gibbs", age: 32, departmentNumber: 1431});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a0 90 23 9d eb 0f 9c 8d be 66> } } }
+db.Employee.update({name: "Michael Gibbs"}, {$set: {age: 42}}, {upsert: false});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Employee.update({name: "Clinton Baptista", }, {$set: {age: 42, departmentNumber: 3512}}, {upsert: true});
+{ acknowledged: 1,
+  insertedId: 
+   { index: 0,
+     _id: 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a0 ab 15 25 ba 5a fd f7 a5 8d> } },
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1 }
+db.Employee.save({name: "Nicoli Smith", age: 25, departmentNumber: 1431});
+{ result: 
+   { n: 1,
+     opTime: 
+      { ts: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 },
+        t: 4 },
+     electionId: 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+     ok: 1,
+     '$clusterTime': 
+      { clusterTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 },
+        signature: 
+         { hash: 
+            { _bsontype: 'Binary',
+              sub_type: 0,
+              position: 20,
+              buffer: <Buffer d1 68 bb 7f c0 75 8a d4 21 eb d5 dc db 3e c4 e8 14 a5 e7 4d> },
+           keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+     operationTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 } },
+  connection: 
+   { _events: 
+      { commandStarted: [Function],
+        commandFailed: [Function],
+        commandSucceeded: [Function],
+        clusterTimeReceived: [Function] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     id: 11,
+     address: '3.6.198.122:27017',
+     bson: {},
+     socketTimeout: 360000,
+     monitorCommands: false,
+     closed: false,
+     destroyed: false,
+     lastIsMasterMS: 71 },
+  message: 
+   { parsed: true,
+     raw: <Buffer e6 00 00 00 37 e4 b6 03 3b 02 00 00 dd 07 00 00 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 03 00 ... 180 more bytes>,
+     data: <Buffer 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 03 00 00 00 b4 a0 75 5f 12 74 00 04 00 00 00 00 00 00 ... 164 more bytes>,
+     bson: {},
+     opts: 
+      { promoteLongs: true,
+        promoteValues: true,
+        promoteBuffers: false },
+     length: 230,
+     requestId: 62317623,
+     responseTo: 571,
+     opCode: 2013,
+     fromCompressed: undefined,
+     responseFlags: 0,
+     checksumPresent: false,
+     moreToCome: false,
+     exhaustAllowed: false,
+     promoteLongs: true,
+     promoteValues: true,
+     promoteBuffers: false,
+     documents: 
+      [ { n: 1,
+          opTime: 
+           { ts: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 },
+             t: 4 },
+          electionId: 
+           { _bsontype: 'ObjectID',
+             id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+          ok: 1,
+          '$clusterTime': 
+           { clusterTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 },
+             signature: 
+              { hash: 
+                 { _bsontype: 'Binary',
+                   sub_type: 0,
+                   position: 20,
+                   buffer: <Buffer d1 68 bb 7f c0 75 8a d4 21 eb d5 dc db 3e c4 e8 14 a5 e7 4d> },
+                keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+          operationTime: { _bsontype: 'Timestamp', low_: 3, high_: 1601544372 } } ],
+     index: 214 },
+  ops: 
+   [ { name: 'Nicoli Smith',
+       age: 25,
+       departmentNumber: 1431,
+       _id: 
+        { _bsontype: 'ObjectID',
+          id: <Buffer 5f 75 a0 b2 23 9d eb 0f 9c 8d be 67> } } ] }
+db.Employee.insert({name: "Andrew Johnson", age: 36, departmentNumber: 1002});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a0 fb 23 9d eb 0f 9c 8d be 68> } } }
+db.Employee.insert({name: "Allen Marx", age: 34, departmentNumber: 1003});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a1 1a 23 9d eb 0f 9c 8d be 69> } } }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+db.Employee.insert({name: "Bob Marley", departmentNumber: 1003});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a1 6a 23 9d eb 0f 9c 8d be 6a> } } }
+db.Employee.update({name: "Bob Marley", {$set: {age: 37}}});
+SyntaxError: Unexpected token (1:40)
+
+> 1 | db.Employee.update({name: "Bob Marley", {$set: {age: 37}}});
+    |                                         ^
+db.Employee.update({name: "Bob Marley"}, {$set: {age: 37}});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a16a239deb0f9c8dbe6a"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 37 }
+db.Employee.remove({name: "Bob Marley"}, {$unset: {age: 37}});
+{ result: 
+   { n: 1,
+     opTime: 
+      { ts: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 },
+        t: 4 },
+     electionId: 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+     ok: 1,
+     '$clusterTime': 
+      { clusterTime: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 },
+        signature: 
+         { hash: 
+            { _bsontype: 'Binary',
+              sub_type: 0,
+              position: 20,
+              buffer: <Buffer c3 0f 6e 9e 99 24 4f 3a 9c 36 2e 96 30 5d 70 bc 16 15 1e c8> },
+           keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+     operationTime: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 } },
+  connection: 
+   { _events: 
+      { commandStarted: [Function],
+        commandFailed: [Function],
+        commandSucceeded: [Function],
+        clusterTimeReceived: [Function] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     id: 11,
+     address: '3.6.198.122:27017',
+     bson: {},
+     socketTimeout: 360000,
+     monitorCommands: false,
+     closed: false,
+     destroyed: false,
+     lastIsMasterMS: 71 },
+  message: 
+   { parsed: true,
+     raw: <Buffer e6 00 00 00 43 cb b7 03 aa 02 00 00 dd 07 00 00 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 01 00 ... 180 more bytes>,
+     data: <Buffer 00 00 00 00 00 d1 00 00 00 10 6e 00 01 00 00 00 03 6f 70 54 69 6d 65 00 1c 00 00 00 11 74 73 00 01 00 00 00 0c a2 75 5f 12 74 00 04 00 00 00 00 00 00 ... 164 more bytes>,
+     bson: {},
+     opts: 
+      { promoteLongs: true,
+        promoteValues: true,
+        promoteBuffers: false },
+     length: 230,
+     requestId: 62376771,
+     responseTo: 682,
+     opCode: 2013,
+     fromCompressed: undefined,
+     responseFlags: 0,
+     checksumPresent: false,
+     moreToCome: false,
+     exhaustAllowed: false,
+     promoteLongs: true,
+     promoteValues: true,
+     promoteBuffers: false,
+     documents: 
+      [ { n: 1,
+          opTime: 
+           { ts: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 },
+             t: 4 },
+          electionId: 
+           { _bsontype: 'ObjectID',
+             id: <Buffer 7f ff ff ff 00 00 00 00 00 00 00 04> },
+          ok: 1,
+          '$clusterTime': 
+           { clusterTime: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 },
+             signature: 
+              { hash: 
+                 { _bsontype: 'Binary',
+                   sub_type: 0,
+                   position: 20,
+                   buffer: <Buffer c3 0f 6e 9e 99 24 4f 3a 9c 36 2e 96 30 5d 70 bc 16 15 1e c8> },
+                keyId: { _bsontype: 'Long', low_: 3, high_: 1600691462 } } },
+          operationTime: { _bsontype: 'Timestamp', low_: 1, high_: 1601544716 } } ],
+     index: 214 } }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+db.Employee.insert({name: "Bob Marley", departmentNumber: 1003, age: 32});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 19 23 9d eb 0f 9c 8d be 6b> } } }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 32 }
+db.Employee.update({name: "Bob Marley"}, {$unset: {age: 32}});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003 }
+db.Employee.update({name: "Bob Marley"}, {$set: {age: 37}});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 37 }
+db.Department.insert({number: 1001, name: "Engineering"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 93 23 9d eb 0f 9c 8d be 6c> } } }
+db.Department.insert({number: 1002, name: "Sales and Marketing"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 a0 23 9d eb 0f 9c 8d be 6d> } } }
+db.Department.insert({number: 1003, name: "Human Resources"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 ab 23 9d eb 0f 9c 8d be 6e> } } }
+db.Department.insert({number: 1004, name: "Information Technology"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 b9 23 9d eb 0f 9c 8d be 6f> } } }
+db.Department.insert({number: 1005, name: "Logistics"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 75 a2 c7 23 9d eb 0f 9c 8d be 70> } } }
+db.Employee.find();
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0b2239deb0f9c8dbe67"),
+  name: 'Nicoli Smith',
+  age: 25,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 37 }
+db.Department.find();
+{ _id: ObjectID("5f75a293239deb0f9c8dbe6c"),
+  number: 1001,
+  name: 'Engineering' }
+{ _id: ObjectID("5f75a2a0239deb0f9c8dbe6d"),
+  number: 1002,
+  name: 'Sales and Marketing' }
+{ _id: ObjectID("5f75a2ab239deb0f9c8dbe6e"),
+  number: 1003,
+  name: 'Human Resources' }
+{ _id: ObjectID("5f75a2b9239deb0f9c8dbe6f"),
+  number: 1004,
+  name: 'Information Technology' }
+{ _id: ObjectID("5f75a2c7239deb0f9c8dbe70"),
+  number: 1005,
+  name: 'Logistics' }
+db.Employee.find({name: /^A/});
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+db.Employee.find({age: {$gt: 30}});
+{ _id: ObjectID("5f75a090239deb0f9c8dbe66"),
+  name: 'Michael Gibbs',
+  age: 42,
+  departmentNumber: 1431 }
+{ _id: ObjectID("5f75a0ab1525ba5afdf7a58d"),
+  name: 'Clinton Baptista',
+  age: 42,
+  departmentNumber: 3512 }
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 37 }
+db.Employee.find({name: 1, departmentNumber: 1}, {age: {$gt: 30}});
+MongoError: Unsupported projection option: age: { $gt: 30 }
+db.Employee.find({name: 1, departmentNumber: 1}, {});
+db.Employee.find({departmentNumber: {$gte: 1001, $lte: 1005}});
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  age: 36,
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  age: 34,
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003,
+  age: 37 }
+db.Employee.find({departmentNumber: {$gte: 1001, $lte: 1005}}, {name: 1});
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson' }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx' }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley' }
+db.Employee.find({departmentNumber: {$gte: 1001, $lte: 1005}}, {name: 1, departmentNumber: 1});
+{ _id: ObjectID("5f75a0fb239deb0f9c8dbe68"),
+  name: 'Andrew Johnson',
+  departmentNumber: 1002 }
+{ _id: ObjectID("5f75a11a239deb0f9c8dbe69"),
+  name: 'Allen Marx',
+  departmentNumber: 1003 }
+{ _id: ObjectID("5f75a219239deb0f9c8dbe6b"),
+  name: 'Bob Marley',
+  departmentNumber: 1003 }
