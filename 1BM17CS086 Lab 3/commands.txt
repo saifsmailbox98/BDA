@@ -1,0 +1,276 @@
+db Student;
+SyntaxError: Unexpected token, expected ";" (1:3)
+
+> 1 | db Student;
+    |    ^
+use Student;
+'switched to db Student'
+mongoexport -d College
+SyntaxError: Unexpected token, expected ";" (1:15)
+
+> 1 | mongoexport -d College
+    |                ^
+mongodump -d College
+SyntaxError: Unexpected token, expected ";" (1:13)
+
+> 1 | mongodump -d College
+    |              ^
+db.Student.insert({"rollNo": 10, "name": "Jenson Fuentes", "age": 14, "contactNo": "9876543210", "emailId": "jen.f@example.com"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e d7 5b 5b 09 c8 21 74 fa 8f 25> } } }
+db.Student.insert({"rollNo": 11, "name": "ABC", "age": 12, "contactNo": "9835143210", "emailId": "fem.k@example.com"});
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e d7 a5 5b 09 c8 21 74 fa 8f 26> } } }
+db.Student.update({"rollNo": 10}, {$set:{"emailId":"jenson.f@example.com"}});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Student.find();
+{ _id: ObjectID("5f7ed75b5b09c82174fa8f25"),
+  rollNo: 10,
+  name: 'Jenson Fuentes',
+  age: 14,
+  contactNo: '9876543210',
+  emailId: 'jenson.f@example.com' }
+{ _id: ObjectID("5f7ed7a55b09c82174fa8f26"),
+  rollNo: 11,
+  name: 'ABC',
+  age: 12,
+  contactNo: '9835143210',
+  emailId: 'fem.k@example.com' }
+db.Student.update({"rollNo": 11}, {$set:{"name": "FEM"}});
+{ acknowledged: 1,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+db.Student.find();
+{ _id: ObjectID("5f7ed75b5b09c82174fa8f25"),
+  rollNo: 10,
+  name: 'Jenson Fuentes',
+  age: 14,
+  contactNo: '9876543210',
+  emailId: 'jenson.f@example.com' }
+{ _id: ObjectID("5f7ed7a55b09c82174fa8f26"),
+  rollNo: 11,
+  name: 'FEM',
+  age: 12,
+  contactNo: '9835143210',
+  emailId: 'fem.k@example.com' }
+db.Student.drop();
+true
+use Customer;
+'switched to db Customer'
+db.createCollection("Customers");
+{ ok: 1 }
+db.Customers.insertMany([{cust_id: 12, acc_bal: 2414, acc_type: 'Z'},{cust_id: 13, acc_bal: 952, acc_type: 'Y'},{cust_id: 14, acc_bal: 1240, acc_type: 'Z'} ,{cust_id: 15, acc_bal: 428, acc_type: 'Y'} ,{cust_id: 16, acc_bal: 3770, acc_type: 'Z'}]);
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 27> },
+     '1': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 28> },
+     '2': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 29> },
+     '3': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 2a> },
+     '4': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 2b> } } }
+db.Customers.find({acc_bal: {$gt: 1200}, acc_type: "Z"});
+{ _id: ObjectID("5f7edc055b09c82174fa8f27"),
+  cust_id: 12,
+  acc_bal: 2414,
+  acc_type: 'Z' }
+{ _id: ObjectID("5f7edc055b09c82174fa8f29"),
+  cust_id: 14,
+  acc_bal: 1240,
+  acc_type: 'Z' }
+{ _id: ObjectID("5f7edc055b09c82174fa8f2b"),
+  cust_id: 16,
+  acc_bal: 3770,
+  acc_type: 'Z' }
+db.Customers.aggregate([{ $project:{ balMin:{ $min:"$acc_bal" }, balMax:{ $max: "$acc_bal"}}}]);
+[ { _id: 
+     { _bsontype: 'ObjectID',
+       id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 27> },
+    balMin: 2414,
+    balMax: 2414 },
+  { _id: 
+     { _bsontype: 'ObjectID',
+       id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 28> },
+    balMin: 952,
+    balMax: 952 },
+  { _id: 
+     { _bsontype: 'ObjectID',
+       id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 29> },
+    balMin: 1240,
+    balMax: 1240 },
+  { _id: 
+     { _bsontype: 'ObjectID',
+       id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 2a> },
+    balMin: 428,
+    balMax: 428 },
+  { _id: 
+     { _bsontype: 'ObjectID',
+       id: <Buffer 5f 7e dc 05 5b 09 c8 21 74 fa 8f 2b> },
+    balMin: 3770,
+    balMax: 3770 } ]
+db.Customers.insertMany([
+  {cust_id: 12, acc_bal: 2414, acc_type: 'Z'},
+  {cust_id: 12, acc_bal: 952, acc_type: 'Y'},
+  {cust_id: 13, acc_bal: 1240, acc_type: 'Z'},
+  {cust_id: 13, acc_bal: 428, acc_type: 'Y'},
+  {cust_id: 14, acc_bal: 3770, acc_type: 'Z'}
+  ]);
+{ acknowledged: 1,
+  insertedIds: 
+   { '0': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e de 4f 5b 09 c8 21 74 fa 8f 2c> },
+     '1': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e de 4f 5b 09 c8 21 74 fa 8f 2d> },
+     '2': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e de 4f 5b 09 c8 21 74 fa 8f 2e> },
+     '3': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e de 4f 5b 09 c8 21 74 fa 8f 2f> },
+     '4': 
+      { _bsontype: 'ObjectID',
+        id: <Buffer 5f 7e de 4f 5b 09 c8 21 74 fa 8f 30> } } }
+db.Customers.find({acc_bal: {$gt: 1200}, acc_type: "Z"});
+{ _id: ObjectID("5f7ede4f5b09c82174fa8f2c"),
+  cust_id: 12,
+  acc_bal: 2414,
+  acc_type: 'Z' }
+{ _id: ObjectID("5f7ede4f5b09c82174fa8f2e"),
+  cust_id: 13,
+  acc_bal: 1240,
+  acc_type: 'Z' }
+{ _id: ObjectID("5f7ede4f5b09c82174fa8f30"),
+  cust_id: 14,
+  acc_bal: 3770,
+  acc_type: 'Z' }
+db.Customers.group(
+    {key: {name:true},
+        reduce: function(obj,prev) { 
+            if (prev.maxValue < obj.acc_bal) { 
+                prev.maxValue = obj.acc_bal; 
+            }  
+        },
+    initial: { maxValue: 0 }}
+);
+TypeError: db.Customers.group is not a function
+db.C.aggregate({$group:{'cust_id':'$cust_id', 'max':{$max:'$acc_bal'}}}, 
+{$sort:{'max':1}}).result
+undefined
+db.Customers.aggregate({$group:{'cust_id':'$cust_id', 'max':{$max:'$acc_bal'}}}, 
+{$sort:{'max':1}}).result
+undefined
+db.Customers.aggregate({$group:{'cust_id':'$cust_id', 'acc_bal':{$max:'$acc_bal'}}}, 
+{$sort:{'acc_bal':1}}).result
+undefined
+db.Customers.aggregate({$group:{'cust_id':'$cust_id', 'acc_bal':{$max:'$acc_bal'}}}, 
+{$sort:{'acc_bal':1}})
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate({$group:{'cust_id':'$cust_id', 'acc_bal':{$max:'$acc_bal'}}}, 
+{$sort:{'acc_bal':1}});
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate({$group:{'cust_id':'$cust_id', 'max':{$max:'$acc_bal'}}}, 
+{$sort:{'max':1}});
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           cust_id: "$cust_id",
+           max_bal: { $max: "$acc_bal" }
+         }
+     }
+   ]
+)
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           cust_id: "$cust_id",
+           max_bal: { $max: "$acc_bal" }
+         }
+     }
+   ]
+);
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           "cust_id": "$cust_id",
+           "max_bal": { $max: "$acc_bal" }
+         }
+     }
+   ]
+);
+MongoError: The field 'cust_id' must be an accumulator object
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           "_id": "$cust_id",
+           "max_bal": { $max: "$acc_bal" }
+         }
+     }
+   ]
+);
+[ { _id: 14, max_bal: 3770 },
+  { _id: 12, max_bal: 2414 },
+  { _id: 13, max_bal: 1240 } ]
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           "_id": "$cust_id",
+           "max_bal": { $max: "$acc_bal" }
+         }
+     }
+   ]
+);
+[ { _id: 13, max_bal: 1240 },
+  { _id: 14, max_bal: 3770 },
+  { _id: 12, max_bal: 2414 } ]
+db.Customers.aggregate(
+   [
+     {
+       $group:
+         {
+           "_id": "$cust_id",
+           "max_bal": { $max: "$acc_bal" },
+           "min_bal": { $min: "$acc_bal" }
+         }
+     }
+   ]
+);
+[ { _id: 12, max_bal: 2414, min_bal: 952 },
+  { _id: 14, max_bal: 3770, min_bal: 3770 },
+  { _id: 13, max_bal: 1240, min_bal: 428 } ]
+db.Customers.drop();
+true
